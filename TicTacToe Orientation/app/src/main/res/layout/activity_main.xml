@@ -12,28 +12,31 @@
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="118.5dp"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="0dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="1dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="1dp">
 
         <Button
             android:id="@+id/button_00"
-            android:layout_width="129.6dp"
-            android:layout_height="200dp"
+            android:layout_width="119.5dp"
+            android:layout_height="match_parent"
             android:clickable="true" />
 
         <Button
             android:id="@+id/button_01"
-            android:layout_width="129.6dp"
-            android:layout_height="200dp"
+            android:layout_width="119.5dp"
+            android:layout_height="match_parent"
             android:clickable="true"
             tools:layout_editor_absoluteX="245dp"
             tools:layout_editor_absoluteY="116dp" />
 
         <Button
             android:id="@+id/button_02"
-            android:layout_width="129.6dp"
+            android:layout_width="119.5dp"
             android:layout_height="match_parent"
             android:clickable="true"
             tools:layout_editor_absoluteX="107dp"
@@ -44,14 +47,16 @@
     <LinearLayout
         android:id="@+id/second"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="118.5dp"
         android:layout_below="@+id/main"
-        android:layout_marginTop="-3dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="1dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="1dp">
 
         <Button
             android:id="@+id/button_10"
-            android:layout_width="129.6dp"
+            android:layout_width="119.5dp"
             android:layout_height="match_parent"
             android:clickable="true"
             tools:layout_editor_absoluteX="16dp"
@@ -59,17 +64,17 @@
 
         <Button
             android:id="@+id/button_11"
-            android:layout_width="129.6dp"
-            android:layout_height="200dp"
+            android:layout_width="119.5dp"
+            android:layout_height="match_parent"
             android:clickable="true"
             tools:layout_editor_absoluteX="245dp"
             tools:layout_editor_absoluteY="76dp" />
 
         <Button
             android:id="@+id/button_12"
-            android:layout_width="129.6dp"
-            android:clickable="true"
+            android:layout_width="119.5dp"
             android:layout_height="match_parent"
+            android:clickable="true"
             tools:layout_editor_absoluteX="245dp"
             tools:layout_editor_absoluteY="9dp" />
     </LinearLayout>
@@ -77,31 +82,33 @@
     <LinearLayout
         android:id="@+id/third"
         android:layout_width="match_parent"
-        android:layout_height="198dp"
+        android:layout_height="118.5dp"
         android:layout_below="@+id/second"
-        android:layout_marginTop="9dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="1dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="1dp">
 
         <Button
             android:id="@+id/button_20"
-            android:layout_width="129.6dp"
-            android:layout_height="200dp"
+            android:layout_width="119.5dp"
+            android:layout_height="match_parent"
             android:clickable="true"
             tools:layout_editor_absoluteX="107dp"
             tools:layout_editor_absoluteY="76dp" />
 
         <Button
             android:id="@+id/button_21"
-            android:layout_width="129.6dp"
-            android:layout_height="200dp"
+            android:layout_width="119.5dp"
+            android:layout_height="match_parent"
             android:clickable="true"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="68dp" />
 
         <Button
             android:id="@+id/button_22"
-            android:layout_width="129.6dp"
-            android:layout_height="200dp"
+            android:layout_width="119.5dp"
+            android:layout_height="match_parent"
             android:clickable="true"
             tools:layout_editor_absoluteX="125dp"
             tools:layout_editor_absoluteY="0dp" />
@@ -109,13 +116,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/third">
+        android:layout_height="125dp"
+        android:layout_below="@+id/third"
+        android:paddingStart="1dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="1dp"
+        android:paddingBottom="2dp">
 
         <TextView
             android:id="@+id/tv1"
-            android:layout_width="389dp"
-            android:layout_height="116dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@android:color/holo_green_light"
             android:gravity="center"
             android:text="PLAY !!"

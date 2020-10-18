@@ -36,22 +36,21 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridLayout;
-import android.widget.GridView;
 import android.widget.TextView;
 
 
 
 public class MainActivity extends AppCompatActivity {
-    private Button[][] buttons = new Button[3][3];
+    private Button[][] buttons = new Button[TicTacToe.SIDE][TicTacToe.SIDE];
+
+
+
+    private TicTacToe tttgame = new TicTacToe();
+    private TextView Tv1;
+
     public static String MA = "MainActivity";
-
-
-    private TicTacToe tttgame;
-    private TextView status;
 
 
     @Override
@@ -82,13 +81,24 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Get width of the screen
-    //  Point size = new Point();
-    // getWindowManager().getDefaultDisplay().getSize(size);
-    // int w = size.x / TicTacToe.SIDE;
+
 
     private void GUI() {
+
+
+        Point size = new Point();
+        getWindowManager().getDefaultDisplay().getSize(size);
+        int w = size.x / TicTacToe.SIDE;
+
+
+
+
         ButtonHandler bh = new ButtonHandler();
         Log.w(MA, "INSIDE GUI");
+
+
+
+
 
         for (int row = 0; row < TicTacToe.SIDE; row++) {
             for (int col = 0; col < TicTacToe.SIDE; col++) {
@@ -96,7 +106,9 @@ public class MainActivity extends AppCompatActivity {
                 String buttonID = "button_" + row + col;
                 int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
                 buttons[row][col] = findViewById(resID);
+                buttons [row][col].setTextSize((int)(w * .2));
                 buttons[row][col].setOnClickListener(bh);
+
 
 
             }
@@ -107,10 +119,9 @@ public class MainActivity extends AppCompatActivity {
 
     //set up layout paramaters for the 4th row layout
    // status= new TextView(this);
-    //TextView tv_1 = status.findViewById(R.id.tv1);
+    //private TextView Tv1 = status.findViewById(R.id);
 
-    //Set up status characteristics
-    //tv_1.setText(tttgame.result());
+
 
 
 
@@ -132,21 +143,37 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateVertical(int row, int column) {
         //add log
+        Tv1 = findViewById(R.id.tv1);
         int play = tttgame.play(row, column);
         if (play == 1)
             buttons[row][column].setText("X");
         else if (play == 2)
             buttons[row][column].setText("O");
         if (tttgame.isGameOver()) {
-            status.setBackgroundColor(Color.RED);
+            Tv1.setBackgroundColor(Color.RED);
             enableButtons(false);
-            status.setText(tttgame.result());
+            Tv1.setText(tttgame.result());
             showNewGameDialog();
         }
 
     }//end of updateVertical
 
-    private void showNewGameDialog() {
+   // private void updateHorizontal(int row, int column) {
+        //add log
+      //  int play = tttgame.play(row, column);
+      //  if (play == 1)
+      //      buttons[row][column].setText("A");
+      //  else if (play == 2)
+      //      buttons[row][column].setText("Z");
+      //  if (tttgame.isGameOver()) {
+      //      Tv1.setBackgroundColor(Color.RED);
+       //     enableButtons(false);
+       //     Tv1.setText(tttgame.result());
+        //    showNewGameDialog();
+       // }
+
+
+        private void showNewGameDialog() {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("This is fun");
         alert.setMessage("Play agian ?");

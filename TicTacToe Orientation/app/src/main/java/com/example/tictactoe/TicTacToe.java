@@ -5,7 +5,7 @@ public class TicTacToe {
     private int turn;
     private int [][] game;
 
-    public TicTacToe( ) {
+    public TicTacToe() {
         game = new int[SIDE][SIDE];
         resetGame( );
     }
