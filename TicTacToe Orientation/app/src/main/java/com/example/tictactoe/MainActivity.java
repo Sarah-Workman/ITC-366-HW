@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         Log.w(MA, "INSIDE onCreate");
 
 
+
+
         tttgame = new TicTacToe();
         GUI();
     }//end of onCreate
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (int row = 0; row < TicTacToe.SIDE; row++) {
             for (int col = 0; col < TicTacToe.SIDE; col++) {
-                Log.w(MA, "ADD BUTTONS TO LINEAR LAYOUT");
+                Log.w(MA, "ADD BUTTON ID TO LINEAR LAYOUT");
                 String buttonID = "button_" + row + col;
                 int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
                 buttons[row][col] = findViewById(resID);
