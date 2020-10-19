@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_burger"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/top_bun"
+        android:layout_width="378dp"
+        android:layout_height="132dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/topbun" />
+
+    <RadioGroup
+        android:id="@+id/Rbutton_group1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/checkBox1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_bun">
+
+        <RadioButton
+            android:id="@+id/Rbutton1.1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lamp Patty"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:buttonTint="@color/OnClickColor" />
+
+        <RadioButton
+            android:id="@+id/Rbutton1.2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beef Patty"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:buttonTint="@color/OnClickColor" />
+
+        <RadioButton
+            android:id="@+id/Rbutton1.3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ostrich Patty"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:buttonTint="@color/OnClickColor" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="5dp"
+        android:text="Prosciutto"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:buttonTint="@color/OnClickColor"
+        app:layout_constraintBottom_toTopOf="@+id/Rbutton_group2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rbutton_group1" />
+
+    <RadioGroup
+        android:id="@+id/Rbutton_group2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/sauce"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox1">
+
+        <RadioButton
+            android:id="@+id/Rbutton2.1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Asiago Cheese"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:buttonTint="@color/OnClickColor" />
+
+        <RadioButton
+            android:id="@+id/Rbutton2.2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Creme Fraich"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:buttonTint="@color/OnClickColor" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/sauce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/sauce"
+        android:textSize="16.5sp"
+        app:layout_constraintBottom_toTopOf="@+id/Seek1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rbutton_group2" />
+
+    <SeekBar
+        android:id="@+id/Seek1"
+        style="@android:style/Widget.DeviceDefault.SeekBar"
+        android:layout_width="243dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="43dp"
+        android:progressDrawable="@android:drawable/bottom_bar"
+        android:progressTint="#D7534F4F"
+        android:thumb="@android:drawable/btn_default_small"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bunn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sauce" />
+
+    <ImageView
+        android:id="@+id/bottom_bunn"
+        android:layout_width="413dp"
+        android:layout_height="220dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/bottombun" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="68dp"
+        android:text="@string/calorie"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottom_bunn" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
