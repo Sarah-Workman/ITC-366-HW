@@ -35,49 +35,118 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.LinearLayout;
 
 
 
 public class MainActivity extends AppCompatActivity {
     private Button[][] buttons = new Button[TicTacToe.SIDE][TicTacToe.SIDE];
 
+    public static int ACTION_BAR_HEIGHT = 56; // vertical, in dp units
+    private float pixelDensity;
+    private boolean verticalDimensionsSet;
+    public static int screenHeightInVP;
+    private int spacingInVP;
+    private boolean horizontalDimensionsSet;
+    public static int screenHeightInHP;
+    private int spacingInHP;
+    private Configuration config;
 
-
+    private LinearLayout ll1, ll2, ll3;
     private TicTacToe tttgame = new TicTacToe();
+
     private TextView Tv1;
 
-    public static String MA = "MainActivity";
 
+    public static String MA = "MainActivity";
+    private int actionBarHeight;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         Log.w(MA, "INSIDE onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        GUI();
+        tttgame = new TicTacToe();
+
         Log.w(MA, "INSIDE onCreate");
 
 
+        Resources res = getResources();
+        DisplayMetrics metrics = res.getDisplayMetrics();
+        pixelDensity = metrics.density;
+
+        Configuration config = getResources().getConfiguration();
+
+        modifyLayout(config);
 
 
-        tttgame = new TicTacToe();
-        GUI();
-    }//end of onCreate
 
-    // Configuration config = getResources().getConfiguration();
-    // modifyLayout(config);
 
-    // public void onConfiguredChanged(Configuration newConfig){
-    //  super.onConfigurationChanged(newConfig);
-    //  modifyLayout(newConfig);
-    // }
+    }
 
-    // private void modifyLayout (Configuration config) {
 
-    // }
+
+
+
+
+
+
+    public void setLayoutMargins (int spacing) {
+
+         Button[] barray1 = new Button[3];
+         barray1[0] = (Button) buttons[0][0];
+         barray1[1] = (Button) buttons[0][1];
+         barray1[2] = (Button) buttons[0][2];
+         Button[] aB1 = new Button[]{barray1[0], barray1[1], barray1[2],};
+        // MarginLayoutParams params1
+               //  = (MarginLayoutParams) aB2.getLayouParams();
+
+         Button[] barray2 = new Button[3];
+         barray1[0] = (Button) buttons[1][0];
+         barray1[1] = (Button) buttons[1][1];
+         barray1[2] = (Button) buttons[1][2];
+         Button[] aB2 = new Button[]{barray1[0], barray1[1], barray1[2],};
+        // MarginLayoutParams params2
+                // = (MarginLayoutParams) aB3.getLayouParams();
+
+         Button[] barray3 = new Button[3];
+         barray2[0] = (Button) buttons[2][0];
+         barray2[1] = (Button) buttons[2][1];
+         barray2[2] = (Button) buttons[2][2];
+         Button[] aB3 = new Button[]{barray2[0], barray2[1], barray2[2],};
+        // ViewGroup.MarginLayoutParams params3
+                // = (ViewGroup.MarginLayoutParams) aB3.getLayoutParams();
+
+
+        // params1.setMargins(0, spacing, 0, 0);
+        // params2.setMargins(0, spacing, 0, 0);
+        // params3.setMargins(0, spacing, 0, 0);
+
+     }
+        @Override
+        public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+          modifyLayout(newConfig);
+    }
+
+
+    public void modifyLayout(Configuration config) {
+        if( config.orientation == Configuration.ORIENTATION_LANDSCAPE )
+            setLayoutMargins( spacingInHP );
+        else if (config.orientation == Configuration.ORIENTATION_PORTRAIT)
+                setLayoutMargins(spacingInVP);
+     }
 
 
     // Get width of the screen
@@ -85,20 +154,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void GUI() {
 
-
         Point size = new Point();
         getWindowManager().getDefaultDisplay().getSize(size);
         int w = size.x / TicTacToe.SIDE;
 
 
-
-
         ButtonHandler bh = new ButtonHandler();
         Log.w(MA, "INSIDE GUI");
-
-
-
-
 
         for (int row = 0; row < TicTacToe.SIDE; row++) {
             for (int col = 0; col < TicTacToe.SIDE; col++) {
@@ -109,21 +171,12 @@ public class MainActivity extends AppCompatActivity {
                 buttons [row][col].setTextSize((int)(w * .2));
                 buttons[row][col].setOnClickListener(bh);
 
-
-
             }
         }
 
+
+
     }//end of GUI
-
-
-    //set up layout paramaters for the 4th row layout
-   // status= new TextView(this);
-    //private TextView Tv1 = status.findViewById(R.id);
-
-
-
-
 
 
 
@@ -133,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
             for (int row = 0; row < TicTacToe.SIDE; row++)
                 for (int column = 0; column < TicTacToe.SIDE; column++)
                     if (v == buttons[row][column])
-                        updateVertical(row, column);
+                        update(row, column);
 
         }
     }//end of ButtonHandler
@@ -141,38 +194,39 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void updateVertical(int row, int column) {
-        //add log
-        Tv1 = findViewById(R.id.tv1);
-        int play = tttgame.play(row, column);
-        if (play == 1)
-            buttons[row][column].setText("X");
-        else if (play == 2)
-            buttons[row][column].setText("O");
-        if (tttgame.isGameOver()) {
-            Tv1.setBackgroundColor(Color.RED);
-            enableButtons(false);
-            Tv1.setText(tttgame.result());
-            showNewGameDialog();
+    private void update(int row, int column) {
+        Log.w("MainActivity", "Inside modifyLayout");
+
+        if( config.orientation == Configuration.ORIENTATION_LANDSCAPE ){
+
+            Tv1 = findViewById(R.id.tv1);
+            int play = tttgame.play(row, column);
+
+            if (play == 1)
+                buttons[row][column].setText("A");
+            else if (play == 2)
+                buttons[row][column].setText("Z");
+                if (tttgame.isGameOver()) {
+                    Tv1.setBackgroundColor(Color.RED);
+                    enableButtons(false);
+                    Tv1.setText(tttgame.result());
+                    showNewGameDialog();
+                }
+        } else if (config.orientation == Configuration.ORIENTATION_PORTRAIT) {
+
+            int play = tttgame.play(row, column);
+            if (play == 1)
+                buttons[row][column].setText("X");
+            else if (play == 2)
+                buttons[row][column].setText("0");
+                if (tttgame.isGameOver()) {
+                    Tv1.setBackgroundColor(Color.RED);
+                    enableButtons(false);
+                    Tv1.setText(tttgame.result());
+                    showNewGameDialog();
+            }
         }
-
-    }//end of updateVertical
-
-   // private void updateHorizontal(int row, int column) {
-        //add log
-      //  int play = tttgame.play(row, column);
-      //  if (play == 1)
-      //      buttons[row][column].setText("A");
-      //  else if (play == 2)
-      //      buttons[row][column].setText("Z");
-      //  if (tttgame.isGameOver()) {
-      //      Tv1.setBackgroundColor(Color.RED);
-       //     enableButtons(false);
-       //     Tv1.setText(tttgame.result());
-        //    showNewGameDialog();
-       // }
-
-
+    }
         private void showNewGameDialog() {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("This is fun");
@@ -181,10 +235,7 @@ public class MainActivity extends AppCompatActivity {
         alert.setPositiveButton("YES", playAgain);
         alert.setNegativeButton("NO", playAgain);
         alert.show();
-
-
-
-    }
+     }
     private class PlayDialog implements DialogInterface.OnClickListener{
 
         @Override
@@ -213,4 +264,5 @@ public class MainActivity extends AppCompatActivity {
                 buttons[row][col].setEnabled(enabled);
 
     }//end of enableButtons
+
 }//end of Main
