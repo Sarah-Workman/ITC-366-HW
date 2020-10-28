@@ -21,12 +21,7 @@ public class MainActivity extends AppCompatActivity {
 		 GUI();
 	}
 
-	@Override
-	protected void onStart() {
-		super.onStart();
-		newNumber = MainActivity.clikable(newNumber);
-		GUI();
-	}
+
 
 	private void GUI(){
 
