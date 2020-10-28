@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-
+	int i = 0;
 
 
 
@@ -39,32 +39,33 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 
-				Button change = (Button) findViewById(R.id.button);
+				i = ++i;
+				colorChange(i);
+				//Integer newValue = MainActivity.clikable(newNumber);
 
-				Integer newValue = MainActivity.clikable(newNumber);
 
+				
 
-				//change based on value
-				if (newValue == 1){
-					change.setBackgroundColor(Color.GREEN);
-					change.setText("Green Light");
-
-				}else if(newValue == 2)
-					change.setBackgroundColor(Color.YELLOW);
-					change.setText("Yellow Light");
-	
 			}//end of onClick
 
 		}//end of ButtonHandler
 
+	public void colorChange(int i) {
+		Button change = (Button) findViewById(R.id.button);
 
-	private static Integer clikable(int newNumber) {
 
-		 (newNumber == 0) 
-			++newNumber;
-			return newNumber;
-	
-	}//end of clickable
+		if (i == 1) {
+			change.setBackgroundColor(Color.GREEN);
+			change.setText("Green Light");
+		}
+		if (i == 2) {
+				change.setBackgroundColor(Color.YELLOW);
+				change.setText("Yellow Light");
+			}
+
+
+	}
+	//
  }//end of Main
 
 
