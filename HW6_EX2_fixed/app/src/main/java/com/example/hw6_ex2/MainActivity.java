@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 		 GUI();
-	}
+	}//end of onCreate
 
 
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
 		start.setOnClickListener(bh);
 
-   	 }
+   	 }//end of GUI
 
 
 
@@ -49,28 +49,23 @@ public class MainActivity extends AppCompatActivity {
 					change.setBackgroundColor(Color.GREEN);
 					change.setText("Green Light");
 
-				}else if(newValue == 2){
+				}else if(newValue == 2)
 					change.setBackgroundColor(Color.YELLOW);
 					change.setText("Yellow Light");
-				}
+	
+			}//end of onClick
 
-
-				}
-			}
-
-
+		}//end of ButtonHandler
 
 
 	private static Integer clikable(int newNumber) {
 
-		if (newNumber == 0) {
+		 (newNumber == 0) 
 			++newNumber;
 			return newNumber;
-		} else if (newNumber == 1){
-		1 + ++newNumber;
-	}
-	}//end of cliclable
- }
+	
+	}//end of clickable
+ }//end of Main
 
 
 
