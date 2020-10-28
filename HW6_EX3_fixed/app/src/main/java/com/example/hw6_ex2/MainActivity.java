@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -51,26 +52,26 @@ public class MainActivity extends AppCompatActivity {
 		}//end of ButtonHandler
 
 	public void colorChange(int i) {
-		Button change = (Button) findViewById(R.id.button);
-
+		
+				TextView Tv1 = (TextView)findViewById(R.id.Tv1);
+                TextView Tv2 = (TextView)findViewById(R.id.Tv2);
+                TextView Tv3 = (TextView)findViewById(R.id.Tv3);
 
 		if (i == 1) {
-			change.setBackgroundColor(Color.GREEN);
-			change.setText("Green Light");
+			Tv1.setVisibility(View.INVISIBLE);
+                	Tv2.setVisibility(View.VISIBLE);
 		}
 		if (i == 2) {
-				change.setBackgroundColor(Color.YELLOW);
-				change.setText("Yellow Light");
+			Tv2.setVisibility(View.INVISIBLE);
+                    	Tv3.setVisibility(View.VISIBLE);
 			}
-		if(i==3){
-			change.setBackgroundColor(Color.RED);
-			change.setText("Yellow Light");
+		if(i ==3) {
+			Tv3.setVisibility(View.INVISIBLE);
+			Tv1.setVisibility(View.VISIBLE);
+
 		}
-
-	}//end of colorChange
-	
+	}
+	//
  }//end of Main
-
-
 
 
